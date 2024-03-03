@@ -18,3 +18,11 @@ function Book(name, author, type){
 
 
 // Add Submit event listener
+
+ let libraryForm = document.getElementById('libraryForm');
+ libraryForm.addEventListener('submit', libraryFormSubmit);
+
+ function libraryFormSubmit(e){
+    e.preventDefault();
+    console.log("You have submitted library form");
+ }

@@ -15,6 +15,11 @@ function Display() {
 }
 
 
+// To store data in local storage
+
+
+
+
 
 //Add methods to display prototype
 
@@ -130,6 +135,22 @@ function libraryFormSubmit(e) {
         display.add(book);
         display.clear();
         display.show('success', '   Your book has been successfully added.');
+
+        let bookDetails = localStorage.getItem('bookDetails');
+        if (bookDetails == null) {
+            notesObj = [];
+        }
+        else {
+            notesObj = JSON.parse(bookDetails);
+        }
+        notesObj.push({
+            name : name,
+            author: author,
+            type: type
+        });
+
+        localStorage.setItem('bookDetails', JSON.stringify(notesObj));
+        showNotes();
     }
     else {
         // Show error to the users

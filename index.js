@@ -1,4 +1,5 @@
-console.log("This is index.js")
+console.log("This is index.js");
+showNotes();
 
 
 // Constructor
@@ -161,4 +162,55 @@ function libraryFormSubmit(e) {
 
 
 }
+// Shows Book List after adding in local storage
+function showNotes() {
+    let bookDetails = localStorage.getItem('bookDetails');
+    if (bookDetails == null) {
+        notesObj = [];
+    }
+    else {
+        notesObj = JSON.parse(bookDetails);
+    }
 
+    let html = "";
+    notesObj.forEach(function (book) {
+        html += `
+        <tr>
+        <td>${book.name}</td>
+       <td>${book.author}</td>
+        <td>${book.type}</td>
+        <td><button id=""onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button></td>
+
+    </tr> `;
+
+    });
+
+    let notesElm = document.getElementById('tableBody');
+    if (notesObj.length != 0) {
+        notesElm.innerHTML = html;
+    }
+    else {
+        notesElm.innerHTML = `  Nothing to show! Use <b>"Add  Book" </b> section above to add book.`
+    }
+   
+
+
+}
+
+// Delete function to remove particular book
+
+function deleteNote(book){
+    
+    let bookDetails = localStorage.getItem('bookDetails');
+    if (bookDetails == null) {
+        notesObj = [];
+    }
+    else {
+        notesObj = JSON.parse(bookDetails);
+    }
+    
+   notesObj.splice(book, 1);
+   localStorage.setItem('bookDetails', JSON.stringify(notesObj));
+
+   showNotes()
+}

@@ -214,3 +214,21 @@ function deleteNote(book){
 
    showNotes()
 }
+
+// Clear function to remove all book
+
+function clearNote(book){
+    
+    let bookDetails = localStorage.getItem('bookDetails');
+    if (bookDetails == null) {
+        notesObj = [];
+    }
+    else {
+        notesObj = JSON.parse(bookDetails);
+    }
+    
+   notesObj.splice(book);
+   localStorage.setItem('bookDetails', JSON.stringify(notesObj));
+
+   showNotes()
+}

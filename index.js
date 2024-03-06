@@ -173,13 +173,14 @@ function showNotes() {
     }
 
     let html = "";
-    notesObj.forEach(function (book) {
+    notesObj.forEach(function (book, index) {
         html += `
         <tr>
+        <td>${index + 1}</td>
         <td>${book.name}</td>
        <td>${book.author}</td>
         <td>${book.type}</td>
-        <td><button id=""onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button></td>
+        <td><button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button></td>
 
     </tr> `;
 

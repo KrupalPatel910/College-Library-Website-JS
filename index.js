@@ -1,7 +1,6 @@
 console.log("This is index.js");
 showNotes();
 
-
 // Constructor
 function Book(name, author, type) {
     this.name = name;
@@ -13,14 +12,7 @@ function Book(name, author, type) {
 //Display Constructor
 function Display() {
 
-}
-
-
-// To store data in local storage
-
-
-
-
+};
 
 //Add methods to display prototype
 
@@ -55,6 +47,7 @@ Display.prototype.validate = function (book) {
 
     }
 };
+
 // Status Message regarding book  
 Display.prototype.show = function (type, message) {
 
@@ -78,9 +71,7 @@ Display.prototype.show = function (type, message) {
 
 }
 
-
-
-// Add Submit event listener
+// Add Submit event listener to submit form 
 
 let libraryForm = document.getElementById('libraryForm');
 libraryForm.addEventListener('submit', libraryFormSubmit);
@@ -91,8 +82,6 @@ function libraryFormSubmit(e) {
 
     let name = document.getElementById('bookName').value;
     let author = document.getElementById('author').value;
-
-    //  fiction nonFiction scienceFiction drama biographies computerProgramming cooking
 
     // Types of Book  targeted by Each ID
     let fiction = document.getElementById('fiction');
@@ -159,9 +148,8 @@ function libraryFormSubmit(e) {
         display.clear()
     };
 
-
-
 }
+
 // Shows Book List after adding in local storage
 function showNotes() {
     let bookDetails = localStorage.getItem('bookDetails');
@@ -194,8 +182,6 @@ function showNotes() {
         notesElm.innerHTML = `  Nothing to show! Use <b>"Add  Book" </b> section above to add book.`
     }
    
-
-
 }
 
 // Delete function to remove particular book
